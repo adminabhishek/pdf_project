@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Upload PDF</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="site-container">
+  <header class="header">
+    <div class="brand">
+      <div class="logo" aria-hidden></div>
+      <h1>PDF Manager</h1>
+    </div>
+    <nav class="nav">
+      <a href="/login" class="link">Admin Login</a>
+    </nav>
+  </header>
+
+  <main class="center">
+    <div class="card" style="max-width:520px;width:100%">
+      <h2>Upload PDF File</h2>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <p class="msg">{{ messages[0] }}</p>
+        {% endif %}
+      {% endwith %}
+
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label class="file-label" for="pdf">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v10" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 7l4-4 4 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="file-label-text">Select a PDF file</span>
+          <span class="file-name" id="file-name">No file selected</span>
+        </label>
+        <input id="pdf" type="file" name="pdf" accept=".pdf" required>
+
+        <div class="actions">
+          <button class="btn btn-primary">Upload</button>
+          <a href="/" class="btn btn-ghost">Cancel</a>
+        </div>
+      </form>
+
+      <script>
+        (function(){
+          const input = document.getElementById('pdf');
+          const nameEl = document.getElementById('file-name');
+          const labelText = document.querySelector('.file-label-text');
+          input.addEventListener('change', function(e){
+            const f = input.files && input.files[0];
+            if(f){
+              const name = f.name.length > 36 ? f.name.slice(0,33) + '...' : f.name;
+              nameEl.textContent = name;
+              labelText.textContent = 'File chosen:';
+            } else {
+              nameEl.textContent = 'No file selected';
+              labelText.textContent = 'Select a PDF file';
+            }
+          });
+        })();
+      </script>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

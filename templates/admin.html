@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Admin Panel</title>
+        <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="site-container">
+    <header class="header">
+        <div class="brand">
+            <div class="logo" aria-hidden></div>
+            <h1>PDF Manager</h1>
+        </div>
+        <nav class="nav">
+            <a href="/" class="link">Upload</a>
+            <a href="/logout" class="btn btn-ghost">Logout</a>
+        </nav>
+    </header>
+
+    <main class="center">
+        <div class="card" style="width:100%">
+            <h2>Admin Dashboard</h2>
+
+            {% if files|length == 0 %}
+                <p class="msg">No files uploaded yet.</p>
+            {% else %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>File</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for f in files %}
+                        <tr>
+                            <td>{{ f[0] }}</td>
+                            <td>{{ f[1] }}</td>
+                            <td>
+                                <div class="row-actions">
+                                    <a class="pill pill-download" href="/download/{{ f[1] }}">Download</a>
+                                    <a class="pill pill-delete" href="/delete/{{ f[0] }}">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

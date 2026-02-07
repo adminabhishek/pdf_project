@@ -1,0 +1,103 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root{
+    --bg:#0f1724; /* deep navy */
+    --card:#0b1220;
+    --muted:#94a3b8;
+    --accent:#7c3aed; /* violet */
+    --glass: rgba(255,255,255,0.04);
+    --glass-2: rgba(255,255,255,0.02);
+    --success:#16a34a;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: linear-gradient(180deg, #061226 0%, #071127 60%);
+    color:#e6eef8;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+.site-container{
+    max-width:1100px;
+    margin:32px auto;
+    padding:24px;
+}
+
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:20px;
+}
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+.logo{
+    width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#4f46e5);box-shadow:0 6px 18px rgba(124,58,237,0.18)
+}
+.brand h1{font-size:18px;margin:0;font-weight:600}
+.nav a{color:var(--muted);text-decoration:none;margin-left:12px;font-size:14px}
+
+.card{
+    background: linear-gradient(180deg,var(--card), rgba(11,18,32,0.6));
+    border-radius:12px;
+    padding:22px;
+    box-shadow: 0 6px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+.center{
+    display:flex;align-items:center;justify-content:center;min-height:60vh;
+}
+
+h2{margin:0 0 14px 0;color:#e6eef8}
+
+form{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+input[type="text"],input[type="password"],.file-label{
+    background:var(--glass);
+    border:1px solid var(--glass-2);
+    padding:12px 14px;border-radius:8px;color:inherit;outline:none;width:100%;
+}
+
+/* custom file input */
+input[type="file"]{display:none}
+.file-label{display:inline-flex;align-items:center;gap:10px;cursor:pointer}
+.file-label svg{opacity:0.9}
+
+.file-label-text{font-weight:600}
+.file-name{color:var(--muted);font-size:13px;padding-left:6px}
+
+.actions{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+.btn-primary{background:linear-gradient(90deg,var(--accent),#4f46e5);color:white;box-shadow:0 8px 30px rgba(79,70,229,0.12)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.05);color:var(--muted)}
+.link{color:var(--accent);text-decoration:none;font-weight:600}
+
+.msg{color:var(--success);background:rgba(22,163,74,0.08);padding:8px;border-radius:8px}
+
+table{width:100%;border-collapse:separate;border-spacing:0 10px;margin-top:12px}
+th{display:none}
+tr{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:10px}
+td{padding:14px;border-bottom:none}
+td:first-child{width:56px;text-align:center;font-weight:600;color:var(--muted)}
+td:nth-child(2){color:#e6eef8}
+.actions a{text-decoration:none}
+
+.row-actions{display:flex;gap:8px}
+.pill{padding:6px 10px;border-radius:999px;font-size:13px}
+.pill-download{background:rgba(124,58,237,0.12);color:var(--accent)}
+.pill-delete{background:rgba(239,68,68,0.08);color:#fb7185}
+
+@media (max-width:640px){
+    .site-container{padding:14px}
+    .header{flex-direction:column;align-items:flex-start}
+    .center{min-height:unset}
+}
+
